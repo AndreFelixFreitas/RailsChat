@@ -1,0 +1,29 @@
+<html>
+<head>
+  <title>Rails Chat</title>
+</head>
+
+<body>
+  <h1>Welcome to Rails Chat</h1>
+  <div>
+    <ul>
+      <% @chat.each do |c| %>
+        <li><%= c.name %><li>
+      <% end %>
+    </ul>
+  </div>
+
+  <form onSubmit="onsubmit(); return false;">
+    <div>
+      <label for="from">Nick:</label>
+      <input id="from" type="text" name="from" value=""/>
+    </div>
+    <div>
+      <label for="msg">Message:</label>
+      <input id="msg" type="text" name="msg" size="50"></input>
+    </div>
+  </form>
+
+</body>
+
+</html>
