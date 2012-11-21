@@ -14,4 +14,4 @@ gem 'jquery-rails'
 gem 'execjs'
 gem 'thin'
 gem 'activerecord'
-
+gem 'http_router'

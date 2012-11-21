@@ -1,4 +1,4 @@
-Railschat::Application.routes.draw do
+#Railschat::Application.routes.draw do
   #root :to => 'chat#chat'
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -56,4 +56,18 @@ Railschat::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+#end
+
+def app_routes
+  Rack::Builder.new do
+    use rack::Session::Cookie
+
+    routes = HttpRouter.new do
+      get('/websocket').to(ChatController)
+    end
+
+    file_server = Rack::File.new(File.join(File.dirname(__FILE__), '../public/'))
+
+    run Rack::Cascade.new([file_serves, routes])
+  end
 end
